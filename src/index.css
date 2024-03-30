@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: #ffffff;
+  /* background-color: white; */
+  color: #313131;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* radio input remove shadow */
+.radio:checked {
+  box-shadow: 0 0 0 3px white inset, 0 0 0 3px white inset;
+  animation: none !important;
+}
+
+.radio {
+  box-shadow: 0 0 0 3px white inset, 0 0 0 3px white inset;
+  animation: none !important;
+}
+.validation-error {
+  @apply mt-1 text-xs text-red-500;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  color: black;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hidescroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidescroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+}
+
+.vs__search {
+  @apply bg-white;
+}
+
+p,
+h1,
+span,
+label,
+a {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overscroll-behavior-y: contain;
+}
+
+input::placeholder {
+  color: #64748b !important;
+  font-weight: 400 !important;
+  opacity: 0.7;
+}
+
+.vue3-results-container {
+  @apply !top-[117px] rounded-md !border-gray-200 text-left text-sm;
+}
+
+.simple-typeahead-list {
+  @apply !fixed !w-fit !bg-white;
+}
+
+/* Custom Tailwind */
+
+@layer base {
+  h1 {
+    @apply text-2xl font-bold text-center;
+  }
+  label {
+    @apply mb-1 inline-block text-sm font-medium;
+  }
+  input,
+  select {
+    @apply focus-visible:outline-0 focus-visible:outline-white focus-visible:ring-0;
+  }
+}
+
+@layer components {
+  /* Layout Components Start */
+  .container {
+    @apply !w-full px-3;
+  }
+
+  .container-center {
+    @apply flex flex-col items-center;
+  }
+
+  .btm-nav {
+    @apply bg-emerald-600;
+  }
+
+  .btm-nav-active {
+    @apply bg-emerald-700;
+  }
+
+  .navbar {
+    @apply w-full bg-emerald-600 text-white;
+  }
+
+  .modal-box {
+    @apply bg-white;
+  }
+  .fb-border {
+    @apply border border-gray-200;
+  }
+
+  /* Layout Components End */
+
+  /* Button Custom  Styles Start */
+
+  .btn {
+    @apply !min-h-fit h-10 border-0 text-white !normal-case rounded-md;
+  }
+
+  .btn[disabled] {
+    @apply bg-gray-100 border-0 !text-gray-500 !min-h-fit rounded-md !normal-case;
+  }
+
+  .btn-secondry-red {
+    @apply bg-white border-2 border-red-500 text-red-500 normal-case rounded-md hover:bg-white hover:border-red-500;
+  }
+
+  .btn-secondry-emerald {
+    @apply bg-white border-2 border-emerald-500 text-emerald-500 normal-case rounded-md hover:bg-white hover:border-emerald-500;
+  }
+
+  .btn-emerald {
+    @apply bg-emerald-600 active:bg-emerald-700 focus:bg-emerald-600 hover:bg-emerald-600 !normal-case text-white font-bold;
+  }
+  .btn-white {
+    @apply bg-white active:bg-white focus:bg-white hover:bg-white !normal-case text-black font-bold;
+  }
+
+  .btn-blue {
+    @apply bg-blue-500 active:bg-blue-600 focus:bg-blue-500 hover:bg-blue-500 !normal-case text-white font-bold;
+  }
+
+  .btn-red {
+    @apply bg-red-500 active:bg-red-600 focus:bg-red-500 hover:bg-red-500 !normal-case text-white font-bold;
+  }
+
+  .btn-orange {
+    @apply bg-orange-500 active:bg-orange-600 focus:bg-orange-500 hover:bg-orange-500 !normal-case text-white font-bold;
+  }
+  .btn-slot {
+    @apply min-w-fit shadow text-sm text-zinc-500 font-medium fb-border px-2 py-1 rounded-md;
+  }
+  .btn-outline-emerald {
+    @apply bg-white text-emerald-600 hover:bg-white border border-emerald-600 hover:border hover:border-emerald-600 text-xs;
+  }
+  .btn-silver-tree {
+    @apply bg-[#5CC390] active:bg-[#5CC390] focus:bg-[#5CC390] hover:bg-[#5CC390] text-white shadow-inner;
+  }
+
+  /* Button Custom  Styles End */
+
+  /* Form Elements Custom Styles Start */
+
+  .input {
+    @apply w-full bg-transparent !min-h-fit h-10 focus-visible:outline-0 text-current border border-gray-500 rounded-lg px-2 pb-0 text-lg;
+  }
+
+  .input[disabled] {
+    @apply bg-gray-100 border-0 text-gray-500;
+  }
+  .form-input {
+    @apply w-full rounded-md  py-1.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:text-xs focus:ring-2 focus:ring-inset focus:ring-indigo-600;
+  }
+
+  .status {
+    @apply p-1 h-8 w-24 text-black font-bold border border-slate-300 text-xs flex items-center justify-center gap-x-1 rounded-full;
+  }
+
+  /* Form Elements Custom Styles End */
+
+  /* Link Custom Styles Start */
+  .link[disabled] {
+    @apply text-gray-500;
+  }
+
+  .link-emerald {
+    @apply text-emerald-600 active:text-emerald-700 hover:text-emerald-500;
+  }
+  /* Link Custom Styles End */
+
+  /* Spinner Custom Styles Start */
+
+  .emerald-spin {
+    @apply fill-emerald-600;
+  }
+
+  .white-spin {
+    @apply fill-white;
+  }
+
+  .spinner-lg {
+    @apply h-8 w-8;
+  }
+  .green-spin {
+    @apply fill-green-600;
+  }
+  .spinner-md {
+    @apply h-4 w-4;
+  }
+
+  .spinner-sm {
+    @apply h-2 w-2;
+  }
+
+  /* Spinner Custom Styles End */
+
+  /* Table */
+
+  .table :where(thead, tfoot) :where(th, td) {
+    @apply bg-[#EEEEEE] normal-case text-sm;
+  }
+  .table :where(tbody th, tbody td) {
+    @apply bg-[#F8F9F8] border-b border-gray-200 text-sm text-sm;
+  }
+  .table th:first-child {
+    @apply relative;
+  }
+}
+/* width */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(183, 181, 181);
+  padding: 2px;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8a8888;
+}
+
+/* input class of input of phone input of react-phone-input */
+.PhoneInputInput {
+  background-color: white;
+}

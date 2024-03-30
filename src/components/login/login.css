@@ -1,0 +1,7 @@
+.login-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-x-8 md:mt-8 md:border md:border-gray-200 md:rounded-lg md:px-6 md:h-full;
+}
+
+.otp-btn {
+  @apply btn btn-blue h-10 mt-4 text-xs md:w-2/3 w-full;
+}
