@@ -34,12 +34,13 @@ const Component = (props: verifyOtpProps) => {
             onChange={setOtp}
             numInputs={6}
             shouldAutoFocus
-            inputStyle="box-content h-5 w-5 mx-3 p-2 border-2 border-gray-200 rounded-md bg-white"
+            inputStyle="box-content h-4 w-4 md:w-5 md:w-5 mx-2 p-2 border-2 border-gray-200 rounded-md bg-white"
             renderInput={(props) => <input {...props} />}
           />
         </div>
         <div className="flex justify-center w-full">
           <button
+            id="sign-in-with-phone"
             disabled={otp.length !== 6}
             className="btn btn-blue h-8 text-xs mt-6 w-full"
           >

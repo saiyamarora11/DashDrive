@@ -13,7 +13,7 @@ const PhoneInputComponent = () => {
         onChange={setPhoneInput}
         international
         countryCallingCodeEditable={false}
-        className="h-10 !bg-white border border-gray-200 rounded-md p-2 w-full "
+        className="h-10 !bg-white border border-gray-200 rounded-md p-2 w-full"
       />
     </>
   );

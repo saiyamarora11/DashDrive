@@ -78,7 +78,7 @@ const Component: FC = () => {
               <div className="mt-4 w-full md:w-2/3">
                 <PhoneInput />
               </div>
-              <button type="submit" className="otp-btn">
+              <button id="sign-in-with-phone" type="submit" className="otp-btn">
                 Send OTP
               </button>
             </form>
