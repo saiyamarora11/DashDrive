@@ -3,6 +3,8 @@ import OtpInput from "react-otp-input";
 
 //imports
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ConfirmationResult } from "firebase/auth";
+import { verifyOTP } from "@/utils/auth";
 
 //types
 type verifyOtpProps = {
@@ -10,7 +12,25 @@ type verifyOtpProps = {
 };
 
 const Component = (props: verifyOtpProps) => {
-  const { otp, setOtp, phoneInput } = useLoginStore();
+  const { otp, setOtp, phoneInput, loginConfirmationResult } = useLoginStore();
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setTimeout(async () => {
+      if (!otp) {
+        alert("Please enter valid otp");
+        return;
+      }
+
+      try {
+        verifyOTP({
+          otp: otp,
+          confirmationResult: loginConfirmationResult as ConfirmationResult,
+        });
+      } catch (err) {
+        throw new Error("error verifying otp");
+      }
+    }, 2000);
+  };
   return (
     <>
       <div className="relative w-full">
@@ -28,25 +48,32 @@ const Component = (props: verifyOtpProps) => {
             {phoneInput}
           </span>
         </p>
-        <div className="mt-6">
-          <OtpInput
-            value={otp}
-            onChange={setOtp}
-            numInputs={6}
-            shouldAutoFocus
-            inputStyle="box-content h-4 w-4 md:w-5 md:w-5 mx-2 p-2 border-2 border-gray-200 rounded-md bg-white"
-            renderInput={(props) => <input {...props} />}
-          />
-        </div>
-        <div className="flex justify-center w-full">
-          <button
-            id="sign-in-with-phone"
-            disabled={otp.length !== 6}
-            className="btn btn-blue h-8 text-xs mt-6 w-full"
-          >
-            Verify OTP
-          </button>
-        </div>
+        <form
+          onSubmit={(e) => {
+            submitHandler(e);
+          }}
+        >
+          <div className="mt-6">
+            <OtpInput
+              value={otp}
+              onChange={setOtp}
+              numInputs={6}
+              shouldAutoFocus
+              inputStyle="box-content h-4 w-4 md:w-5 md:w-5 mx-2 p-2 border-2 border-gray-200 rounded-md bg-white"
+              renderInput={(props) => <input {...props} />}
+            />
+          </div>
+          <div className="flex justify-center w-full">
+            <button
+              id="sign-in-with-phone"
+              disabled={otp.length !== 6}
+              type="submit"
+              className="btn btn-blue h-8 text-xs mt-6 w-full"
+            >
+              Verify OTP
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );

@@ -1,6 +1,10 @@
 // sendOTP.ts
 import { auth } from "@/firebase";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {
+  ConfirmationResult,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 
 export const sendOTP = async (
   phoneNumber: string,
@@ -27,4 +31,20 @@ export const sendOTP = async (
   } catch (err) {
     console.log("otp not sent", err);
   }
+};
+
+export const verifyOTP = (args: {
+  otp: string;
+  confirmationResult: ConfirmationResult;
+}) => {
+  args.confirmationResult
+    .confirm(args.otp)
+    .then(() => {
+      window.location.href = "/about";
+    })
+    .catch((reason) => {
+      console.log("reason ->", reason);
+      alert("Invalid Otp");
+      console.log("otp verification cause", reason?.cause);
+    });
 };
