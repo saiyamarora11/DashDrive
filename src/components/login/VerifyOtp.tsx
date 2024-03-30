@@ -5,6 +5,7 @@ import OtpInput from "react-otp-input";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ConfirmationResult } from "firebase/auth";
 import { verifyOTP } from "@/utils/auth";
+import "@/components/login/login.css";
 
 //types
 type verifyOtpProps = {
@@ -59,7 +60,7 @@ const Component = (props: verifyOtpProps) => {
               onChange={setOtp}
               numInputs={6}
               shouldAutoFocus
-              inputStyle="box-content h-4 w-4 md:w-5 md:w-5 mx-2 p-2 border-2 border-gray-200 rounded-md bg-white"
+              inputStyle="otp_box"
               renderInput={(props) => <input {...props} />}
             />
           </div>
