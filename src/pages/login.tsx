@@ -58,32 +58,39 @@ const Component: FC = () => {
   return (
     <ContainerPrimary>
       <ContainerSecondary>
-        <div className="login-grid">
-          <div className="w-full md:border-r">
-            <LoginAnimation />
-          </div>
-          <div className="flex flex-col justify-center h-full">
-            <div className="font-bold text-xl text-center mt-4">
-              Verify your mobile number
+        <div className="flex justify-center items-center h-full">
+          <div className="login-grid">
+            <div className="w-full md:border-r">
+              <LoginAnimation />
             </div>
-            <p className="text-gray-500 text-sm font-medium text-center mt-4">
-              App will send an SMS message to verify your mobile number
-            </p>
-            <form
-              className="flex flex-col items-center w-full"
-              onSubmit={(e) => {
-                submitHandler(e);
-              }}
-            >
-              <div className="mt-4 w-full md:w-2/3">
-                <PhoneInput />
+            <div className="flex flex-col justify-center h-full">
+              <div className="font-bold text-xl text-center mt-4">
+                Verify your mobile number
               </div>
-              <button id="sign-in-with-phone" type="submit" className="otp-btn">
-                Send OTP
-              </button>
-            </form>
+              <p className="text-gray-500 text-sm font-medium text-center mt-4">
+                App will send an SMS message to verify your mobile number
+              </p>
+              <form
+                className="flex flex-col items-center w-full"
+                onSubmit={(e) => {
+                  submitHandler(e);
+                }}
+              >
+                <div className="mt-4 w-full md:w-2/3">
+                  <PhoneInput />
+                </div>
+                <button
+                  id="sign-in-with-phone"
+                  type="submit"
+                  className="otp-btn"
+                >
+                  Send OTP
+                </button>
+              </form>
+            </div>
           </div>
         </div>
+
         <Modal openModal={showModal} id="verify_otp_modal">
           <div className="flex flex-col items-center">
             <VerifyOtp onClose={() => setShowModal(false)} />

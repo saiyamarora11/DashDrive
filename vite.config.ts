@@ -5,6 +5,8 @@ import svgLoader from "vite-svg-loader";
 import svgr from "vite-plugin-svgr";
 import * as path from "path";
 
+const excludeAuth = ["login"];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -20,6 +22,15 @@ export default defineConfig({
       },
     }),
     svgr(),
-    Pages(),
+    Pages({
+      extendRoute(route, parent) {
+        return {
+          ...route,
+          meta: {
+            requiresAuth: !excludeAuth.includes(route.name),
+          },
+        };
+      },
+    }),
   ],
 });

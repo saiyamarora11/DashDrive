@@ -2,8 +2,10 @@
 import { auth } from "@/firebase";
 import {
   ConfirmationResult,
+  onAuthStateChanged,
   RecaptchaVerifier,
   signInWithPhoneNumber,
+  signOut,
 } from "firebase/auth";
 
 export const sendOTP = async (
@@ -47,4 +49,21 @@ export const verifyOTP = (args: {
       alert("Invalid Otp");
       console.log("otp verification cause", reason?.cause);
     });
+};
+export const signOutUser = async () => {
+  await signOut(auth);
+  window.location.replace("/login");
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        unsubscribe();
+        resolve(user);
+      },
+      reject
+    );
+  });
 };
