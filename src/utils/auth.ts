@@ -1,11 +1,13 @@
 // sendOTP.ts
 import { auth } from "@/firebase";
+import useUserStore from "@/store/user";
 import {
   ConfirmationResult,
   onAuthStateChanged,
   RecaptchaVerifier,
   signInWithPhoneNumber,
   signOut,
+  User,
 } from "firebase/auth";
 
 export const sendOTP = async (
@@ -56,12 +58,14 @@ export const signOutUser = async () => {
 };
 
 export const getCurrentUser = () => {
+  const { setUserDetails } = useUserStore();
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (user) => {
         unsubscribe();
         if (user) {
+          setUserDetails(user as User);
           resolve(user);
         }
       },

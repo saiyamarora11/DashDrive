@@ -5,27 +5,19 @@ import routes from "~react-pages";
 //actions
 import { getCurrentUser } from "./utils/auth";
 
-//store
-import useUserStore from "./store/user";
-
 //imports
 import "./index.css";
 
-//types
-import { User } from "@firebase/auth";
-
 const AppLayout = () => {
-  const { setUserDetails } = useUserStore();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserDetails = async () => {
       try {
-        const user = await getCurrentUser();
-        setUserDetails(user as User);
+        await getCurrentUser();
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
-    fetchData();
+    fetchUserDetails();
   }, []);
 
   return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
