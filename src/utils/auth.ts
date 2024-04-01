@@ -61,7 +61,9 @@ export const getCurrentUser = () => {
       auth,
       (user) => {
         unsubscribe();
-        resolve(user);
+        if (user) {
+          resolve(user);
+        }
       },
       reject
     );
